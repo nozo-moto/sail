@@ -30,7 +30,7 @@ class InstallCommand extends Command
         if ($this->option('with')) {
             $services = $this->option('with') == 'none' ? [] : explode(',', $this->option('with'));
         } elseif ($this->option('no-interaction')) {
-            $services = ['mysql', 'redis', 'selenium', 'mailhog'];
+            $services = ['mysql8', 'redis', 'selenium', 'mailhog'];
         } else {
             $services = $this->gatherServicesWithSymfonyMenu();
         }
@@ -49,7 +49,8 @@ class InstallCommand extends Command
     protected function gatherServicesWithSymfonyMenu()
     {
         return $this->choice('Which services would you like to install?', [
-             'mysql',
+             'mysql8',
+             'mysql57',
              'pgsql',
              'redis',
              'memcached',
@@ -69,7 +70,7 @@ class InstallCommand extends Command
     {
         $depends = collect($services)
             ->filter(function ($service) {
-                return in_array($service, ['mysql', 'pgsql', 'redis', 'selenium']);
+                return in_array($service, ['mysql8', 'mysql57', 'pgsql', 'redis', 'selenium']);
             })->map(function ($service) {
                 return "            - {$service}";
             })->whenNotEmpty(function ($collection) {
@@ -82,7 +83,7 @@ class InstallCommand extends Command
 
         $volumes = collect($services)
             ->filter(function ($service) {
-                return in_array($service, ['mysql', 'pgsql', 'redis', 'meilisearch']);
+                return in_array($service, ['mysql8', 'mysql57', 'pgsql', 'redis', 'meilisearch']);
             })->map(function ($service) {
                 return "    sail{$service}:\n        driver: local";
             })->whenNotEmpty(function ($collection) {
