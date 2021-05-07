@@ -1,6 +1,18 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/sail/compare/v1.4.11...1.x)
+## [Unreleased](https://github.com/laravel/sail/compare/v1.4.13...1.x)
+
+
+## [v1.5.0 (2021-04-20)](https://github.com/laravel/sail/compare/v1.4.12...v1.4.13)
+
+### Added
+- MariaDB support ([#111](https://github.com/laravel/sail/pull/111))
+
+
+## [v1.4.12 (2021-04-13)](https://github.com/laravel/sail/compare/v1.4.11...v1.4.12)
+
+### Fixed
+- Load missing PECL package index before installing Swoole ([#94](https://github.com/laravel/sail/pull/94))
 
 
 ## [v1.4.11 (2021-04-06)](https://github.com/laravel/sail/compare/v1.4.10...v1.4.11)
